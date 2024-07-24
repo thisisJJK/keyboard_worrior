@@ -1,0 +1,85 @@
+class LanguageData {
+  List<Poem> poems;
+  List<Word> words;
+  List<Proverb> proverbs;
+  List<Custom> customs;
+
+  LanguageData({required this.poems, required this.words, required this.proverbs, required this.customs});
+
+  factory LanguageData.fromJson(Map<String, dynamic> json) {
+    return LanguageData(
+      poems: List<Poem>.from(json['poem'].map((poem) => Poem.fromJson(poem))),
+      words: List<Word>.from(json['word'].map((word) => Word.fromJson(word))),
+      proverbs: List<Proverb>.from(json['proverb'].map((proverb) => Proverb.fromJson(proverb))),
+      customs: List<Custom>.from(json['custom'].map((custom) => Custom.fromJson(custom))),
+    );
+  }
+}
+
+class Poem {
+  String title;
+  String writer;
+  String content;
+
+  Poem({required this.title, required this.writer, required this.content});
+
+  factory Poem.fromJson(Map<String, dynamic> json) {
+    return Poem(
+      title: json['title'],
+      writer: json['writer'],
+      content: json['content'],
+    );
+  }
+}
+
+class Word {
+  String content;
+
+  Word({required this.content});
+
+  factory Word.fromJson(Map<String, dynamic> json) {
+    return Word(
+      content: json['content'],
+    );
+  }
+}
+
+class Proverb {
+  String content;
+
+  Proverb({required this.content});
+
+  factory Proverb.fromJson(Map<String, dynamic> json) {
+    return Proverb(
+      content: json['content'],
+    );
+  }
+}
+
+class Custom {
+  String title;
+  String content;
+
+  Custom({required this.title, required this.content});
+
+  factory Custom.fromJson(Map<String, dynamic> json) {
+    return Custom(
+      title: json['title'],
+      content: json['content'],
+    );
+  }
+}
+
+class LanguageModel {
+  LanguageData kor;
+  LanguageData eng;
+
+  LanguageModel({required this.kor, required this.eng});
+
+  factory LanguageModel.fromJson(Map<String, dynamic> json) {
+    return LanguageModel(
+      kor: LanguageData.fromJson(json['kor'][0]),
+      eng: LanguageData.fromJson(json['eng'][0]),
+    );
+  }
+}
