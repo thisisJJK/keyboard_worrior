@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:keyboard_warrior/service/color_service.dart';
+import 'package:keyboard_warrior/ui/mode/custom/custom_view.dart';
 import 'package:keyboard_warrior/ui/mode/poem/poem_view.dart';
+import 'package:keyboard_warrior/ui/mode/proverb/proverb_view.dart';
+import 'package:keyboard_warrior/ui/mode/word/word_view.dart';
 import 'package:keyboard_warrior/widget/mode_card.dart';
 import 'package:keyboard_warrior/widget/power_card.dart';
 
@@ -79,7 +82,13 @@ class ModeSelectedView extends StatelessWidget {
                 ),
                 ModeCard(
                   name: Mode.proverb.name,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ProverbView(),
+                      ),
+                    );
+                  },
                   isWide: false,
                 ),
               ],
@@ -89,12 +98,24 @@ class ModeSelectedView extends StatelessWidget {
               children: [
                 ModeCard(
                   name: Mode.word.name,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const WordView(),
+                      ),
+                    );
+                  },
                   isWide: false,
                 ),
                 ModeCard(
                   name: Mode.custom.name,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const CustomView(),
+                      ),
+                    );
+                  },
                   isWide: false,
                 ),
               ],

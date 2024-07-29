@@ -1,25 +1,7 @@
-class LanguageData {
-  List<Poem> poems;
-  List<Word> words;
-  List<Proverb> proverbs;
-  List<Custom> customs;
-
-  LanguageData({required this.poems, required this.words, required this.proverbs, required this.customs});
-
-  factory LanguageData.fromJson(Map<String, dynamic> json) {
-    return LanguageData(
-      poems: List<Poem>.from(json['poem'].map((poem) => Poem.fromJson(poem))),
-      words: List<Word>.from(json['word'].map((word) => Word.fromJson(word))),
-      proverbs: List<Proverb>.from(json['proverb'].map((proverb) => Proverb.fromJson(proverb))),
-      customs: List<Custom>.from(json['custom'].map((custom) => Custom.fromJson(custom))),
-    );
-  }
-}
-
 class Poem {
-  String title;
-  String writer;
-  String content;
+  final String title;
+  final String writer;
+  final String content;
 
   Poem({required this.title, required this.writer, required this.content});
 
@@ -33,7 +15,7 @@ class Poem {
 }
 
 class Word {
-  String content;
+  final String content;
 
   Word({required this.content});
 
@@ -45,7 +27,7 @@ class Word {
 }
 
 class Proverb {
-  String content;
+  final String content;
 
   Proverb({required this.content});
 
@@ -57,8 +39,8 @@ class Proverb {
 }
 
 class Custom {
-  String title;
-  String content;
+  final String title;
+  final String content;
 
   Custom({required this.title, required this.content});
 
@@ -70,16 +52,20 @@ class Custom {
   }
 }
 
-class LanguageModel {
-  LanguageData kor;
-  LanguageData eng;
+class WritingData {
+  final List<Poem> poems;
+  final List<Word> words;
+  final List<Proverb> proverbs;
+  final List<Custom> customs;
 
-  LanguageModel({required this.kor, required this.eng});
+  WritingData({required this.poems, required this.words, required this.proverbs, required this.customs});
 
-  factory LanguageModel.fromJson(Map<String, dynamic> json) {
-    return LanguageModel(
-      kor: LanguageData.fromJson(json['kor'][0]),
-      eng: LanguageData.fromJson(json['eng'][0]),
+  factory WritingData.fromJson(Map<String, dynamic> json) {
+    return WritingData(
+      poems: (json['poem'] as List).map((item) => Poem.fromJson(item)).toList(),
+      words: (json['word'] as List).map((item) => Word.fromJson(item)).toList(),
+      proverbs: (json['proverb'] as List).map((item) => Proverb.fromJson(item)).toList(),
+      customs: (json['custom'] as List).map((item) => Custom.fromJson(item)).toList(),
     );
   }
 }

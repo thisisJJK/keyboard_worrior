@@ -2,27 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:keyboard_warrior/data/model';
 import 'package:keyboard_warrior/service/color_service.dart';
 import 'package:keyboard_warrior/ui/mode/base/base_view.dart';
-import 'package:keyboard_warrior/ui/mode/poem/poem_view_model.dart';
+import 'package:keyboard_warrior/ui/mode/proverb/proverb_view_model.dart';
 import 'package:keyboard_warrior/ui/mode_select/mode_selected_view.dart';
 
-class PoemView extends StatefulWidget {
-  const PoemView({super.key});
+class ProverbView extends StatefulWidget {
+  const ProverbView({super.key});
 
   @override
-  State<PoemView> createState() => _PoemViewState();
+  State<ProverbView> createState() => _ProverbViewState();
 }
 
-class _PoemViewState extends State<PoemView> {
-  final PoemViewModel poemViewModel = PoemViewModel();
+class _ProverbViewState extends State<ProverbView> {
+  ProverbViewModel proverbViewModel = ProverbViewModel();
 
   @override
   Widget build(BuildContext context) {
     final ColorService colorService = ColorService();
     return BaseView(
-      name: Mode.poem.name,
-      viewModel: poemViewModel,
+      name: Mode.proverb.name,
+      viewModel: proverbViewModel,
       builder: (context, viewModel) {
-        return FutureBuilder<List<Poem>>(
+        return FutureBuilder<List<Proverb>>(
           future: viewModel.loadPoem('kor'),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -34,11 +34,11 @@ class _PoemViewState extends State<PoemView> {
                 child: Text('No data'),
               );
             } else {
-              final poemItems = snapshot.data!;
+              final proverbItems = snapshot.data!;
 
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  final poem = poemItems[index];
+                  final proverb = proverbItems[index];
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: GestureDetector(
@@ -46,14 +46,13 @@ class _PoemViewState extends State<PoemView> {
                       child: Card(
                         color: colorService.cardBackgroundColor,
                         child: ListTile(
-                          title: Text(poem.title),
-                          subtitle: Text(poem.writer),
+                          title: Text(proverb.content),
                         ),
                       ),
                     ),
                   );
                 },
-                itemCount: poemItems.length,
+                itemCount: proverbItems.length,
               );
             }
           },

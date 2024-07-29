@@ -4,13 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:keyboard_warrior/data/model';
 import 'package:keyboard_warrior/ui/mode/base/base_view_model.dart';
 
-class PoemViewModel extends BaseViewModel {
-  Future<List<Poem>> loadPoem(String lang) async {
+class WordViewModel extends BaseViewModel{
+   Future<List<Word>> loadPoem(String lang) async {
     String filePath;
     if (lang == 'kor') {
-      filePath = 'assets/json/kor/kor_poem.json';
+      filePath = 'assets/json/kor/kor_word.json';
     } else if (lang == 'eng') {
-      filePath = 'assets/json/eng/eng_poem.json';
+      filePath = 'assets/json/eng/eng_word.json';
     } else {
       throw Exception('error');
     }
@@ -19,6 +19,6 @@ class PoemViewModel extends BaseViewModel {
 
     final List<dynamic> data = jsonDecode(response);
 
-    return data.map((item) => Poem.fromJson(item)).toList();
+    return data.map((item) => Word.fromJson(item)).toList();
   }
-}
+} 

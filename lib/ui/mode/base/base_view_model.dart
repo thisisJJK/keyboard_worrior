@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class BaseViewModel with ChangeNotifier {
-  bool _isLoading = false;
+  
+  bool _isKor = true;
 
-  bool get isLoading => _isLoading;
+  bool get isKor => _isKor;
 
-  set isLoading(bool value) {
-    _isLoading = value;
+  set isKor(bool value) {
+    _isKor = value;
+    
     notifyListeners();
   }
-
-
 }
