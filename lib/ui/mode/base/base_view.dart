@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:keyboard_warrior/service/color_service.dart';
+import 'package:keyboard_warrior/service/theme_service.dart';
 import 'package:keyboard_warrior/ui/mode/base/base_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -19,11 +19,10 @@ class BaseView<T extends BaseViewModel> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ColorService colorService = ColorService();
     return Scaffold(
-      backgroundColor: colorService.appBackgroundColor,
+      backgroundColor: context.color.background,
       appBar: AppBar(
-        backgroundColor: colorService.appBackgroundColor,
+        backgroundColor: context.color.background,
         title: Text(name),
       ),
       body: ChangeNotifierProvider(

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:keyboard_warrior/service/color_service.dart';
+import 'package:keyboard_warrior/service/theme_service.dart';
 
-class CustomManagementCard extends StatelessWidget {
-  const CustomManagementCard({super.key});
+class CustomManagementBtn extends StatelessWidget {
+  const CustomManagementBtn({super.key});
 
   @override
   Widget build(BuildContext context) {
-    ColorService colorService = ColorService();
     final size = MediaQuery.of(context).size;
     return GestureDetector(
         onTap: () {
@@ -16,7 +16,7 @@ class CustomManagementCard extends StatelessWidget {
           height: size.height * 0.09,
           width: size.width * 0.8,
           child: Card(
-            color: colorService.customBackgroundColor,
+            color: ColorService.viridian,
             child: Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -25,7 +25,7 @@ class CustomManagementCard extends StatelessWidget {
                   Text(
                     '추가/편집',
                     style: TextStyle(
-                      color: colorService.cardTextColor,
+                      color: context.color.text,
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                     ),

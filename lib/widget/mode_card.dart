@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:keyboard_warrior/service/color_service.dart';
+import 'package:keyboard_warrior/service/theme_service.dart';
 
 class ModeCard extends StatelessWidget {
   const ModeCard({
@@ -14,7 +14,6 @@ class ModeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ColorService colorService = ColorService();
     final Size mySize = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: onPressed,
@@ -22,14 +21,15 @@ class ModeCard extends StatelessWidget {
         width: isWide ? mySize.width * 0.9 : mySize.width * 0.45,
         height: mySize.height * 0.15,
         child: Card(
-          color: colorService.cardBackgroundColor,
+          color: context.color.modeCardColor,
           child: Center(
             child: Text(
               name,
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                  color: colorService.cardTextColor),
+                fontWeight: FontWeight.bold,
+                fontSize: 24,
+                color: context.color.text,
+              ),
             ),
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:keyboard_warrior/data/model';
-import 'package:keyboard_warrior/service/color_service.dart';
+import 'package:keyboard_warrior/service/theme_service.dart';
+import 'package:keyboard_warrior/ui/detail/detail_bottom_sheet.dart';
 import 'package:keyboard_warrior/ui/mode/base/base_view.dart';
 import 'package:keyboard_warrior/ui/mode/word/word_view_model.dart';
 import 'package:keyboard_warrior/ui/mode_select/mode_selected_view.dart';
@@ -17,7 +18,6 @@ class _ProverbViewState extends State<WordView> {
 
   @override
   Widget build(BuildContext context) {
-    final ColorService colorService = ColorService();
     return BaseView(
       name: Mode.word.name,
       viewModel: wordViewModel,
@@ -42,9 +42,19 @@ class _ProverbViewState extends State<WordView> {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            return DetailBottomSheet(
+                              title: word.title,
+                              content: word.content,
+                            );
+                          },
+                        );
+                      },
                       child: Card(
-                        color: colorService.cardBackgroundColor,
+                        color: context.color.modeCardColor,
                         child: ListTile(
                           title: Text(word.content),
                         ),

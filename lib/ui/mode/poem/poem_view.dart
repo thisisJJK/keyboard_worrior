@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:keyboard_warrior/data/model';
-import 'package:keyboard_warrior/service/color_service.dart';
+import 'package:keyboard_warrior/service/theme_service.dart';
+import 'package:keyboard_warrior/ui/detail/detail_bottom_sheet.dart';
 import 'package:keyboard_warrior/ui/mode/base/base_view.dart';
 import 'package:keyboard_warrior/ui/mode/poem/poem_view_model.dart';
 import 'package:keyboard_warrior/ui/mode_select/mode_selected_view.dart';
@@ -17,7 +18,6 @@ class _PoemViewState extends State<PoemView> {
 
   @override
   Widget build(BuildContext context) {
-    final ColorService colorService = ColorService();
     return BaseView(
       name: Mode.poem.name,
       viewModel: poemViewModel,
@@ -42,9 +42,18 @@ class _PoemViewState extends State<PoemView> {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return DetailBottomSheet(
+                                title: poem.title,
+                                content: poem.content,
+                              );
+                            });
+                      },
                       child: Card(
-                        color: colorService.cardBackgroundColor,
+                        color: context.color.modeCardColor,
                         child: ListTile(
                           title: Text(poem.title),
                           subtitle: Text(poem.writer),

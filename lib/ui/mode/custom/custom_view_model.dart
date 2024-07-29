@@ -6,7 +6,7 @@ import 'package:keyboard_warrior/ui/mode/base/base_view_model.dart';
 
 class CustomViewModel extends BaseViewModel {
   Future<List<Custom>> loadPoem() async {
-    String filePath = 'assets/json/custom.json';
+    const String filePath = 'assets/json/custom.json';
 
     final String response = await rootBundle.loadString(filePath);
 

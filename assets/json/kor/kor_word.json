@@ -1,11 +1,14 @@
 [
     {
+        "title": "단어 1",
         "content": "단어1"
     },
     {
+        "title": "단어 2",
         "content": "단어2"
     },
     {
+        "title": "단어 3",
         "content": "단어3"
     }
 ]

@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:keyboard_warrior/service/color_service.dart';
+import 'package:keyboard_warrior/service/theme_service.dart';
 
 class PowerCard extends StatelessWidget {
   const PowerCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ColorService colorService = ColorService();
     final Size mySize = MediaQuery.of(context).size;
     return SizedBox(
       height: mySize.height * 0.18,
       width: mySize.width * 0.9,
       child: Card(
-        color: colorService.powerBackgroundColor,
+        color: context.color.powerCardColor,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -22,7 +21,7 @@ class PowerCard extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
-                  color: colorService.cardTextColor,
+                  color: context.color.text,
                 ),
               ),
               Text(
@@ -30,7 +29,7 @@ class PowerCard extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 48,
-                  color: colorService.cardTextColor,
+                  color: context.color.subtext,
                 ),
               ),
             ],

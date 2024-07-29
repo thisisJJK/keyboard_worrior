@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:keyboard_warrior/data/model';
-import 'package:keyboard_warrior/service/color_service.dart';
+import 'package:keyboard_warrior/service/theme_service.dart';
+import 'package:keyboard_warrior/ui/detail/detail_bottom_sheet.dart';
 import 'package:keyboard_warrior/ui/mode/base/base_view.dart';
 import 'package:keyboard_warrior/ui/mode/custom/custom_view_model.dart';
 import 'package:keyboard_warrior/ui/mode_select/mode_selected_view.dart';
-import 'package:keyboard_warrior/widget/custom_management_card.dart';
+import 'package:keyboard_warrior/widget/custom_management_btn.dart';
 
 class CustomView extends StatefulWidget {
   const CustomView({super.key});
@@ -18,7 +19,6 @@ class _ProverbViewState extends State<CustomView> {
 
   @override
   Widget build(BuildContext context) {
-    final ColorService colorService = ColorService();
     return BaseView(
       name: Mode.custom.name,
       viewModel: customViewModel,
@@ -49,9 +49,18 @@ class _ProverbViewState extends State<CustomView> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 16.0),
                             child: GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  builder: (context) {
+                                    return DetailBottomSheet(
+                                        title: custom.title,
+                                        content: custom.content);
+                                  },
+                                );
+                              },
                               child: Card(
-                                color: colorService.cardBackgroundColor,
+                                color: context.color.modeCardColor,
                                 child: ListTile(
                                   title: Text(custom.title),
                                   subtitle: Text(custom.content),
@@ -66,7 +75,7 @@ class _ProverbViewState extends State<CustomView> {
                   }
                 },
               ),
-              const CustomManagementCard(),
+              const CustomManagementBtn(),
             ],
           ),
         );

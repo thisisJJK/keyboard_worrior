@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:keyboard_warrior/service/color_service.dart';
+import 'package:keyboard_warrior/service/theme_service.dart';
 import 'package:keyboard_warrior/ui/mode/custom/custom_view.dart';
 import 'package:keyboard_warrior/ui/mode/poem/poem_view.dart';
 import 'package:keyboard_warrior/ui/mode/proverb/proverb_view.dart';
 import 'package:keyboard_warrior/ui/mode/word/word_view.dart';
 import 'package:keyboard_warrior/widget/mode_card.dart';
 import 'package:keyboard_warrior/widget/power_card.dart';
+import 'package:keyboard_warrior/widget/setting_bottom_sheet.dart';
 
 enum Mode {
   battle(name: '배틀하기'),
@@ -27,25 +28,31 @@ class ModeSelectedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ColorService colorService = ColorService();
     return Scaffold(
-      backgroundColor: colorService.appBackgroundColor,
+      backgroundColor: context.color.background,
       appBar: AppBar(
-        backgroundColor: colorService.appBackgroundColor,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.all(8),
-            child: Icon(
-              Icons.settings,
-              size: 32,
-            ),
-          ),
+        backgroundColor: context.color.background,
+        actions: [
+          IconButton(
+              onPressed: () {
+                showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return const SettingBottomSheet();
+                    });
+              },
+              icon: Icon(
+                Icons.settings,
+                size: 32,
+                color: context.color.text,
+              )),
         ],
-        title: const Text(
+        title: Text(
           '키보드워리어',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 32,
+            color: context.color.text,
           ),
         ),
         centerTitle: false,

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:keyboard_warrior/service/color_service.dart';
+import 'package:keyboard_warrior/service/theme_service.dart';
 import 'package:keyboard_warrior/ui/mode_select/mode_selected_view.dart';
 
 class SplashView extends StatefulWidget {
@@ -24,9 +24,8 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    final ColorService colorService = ColorService();
     return Scaffold(
-        backgroundColor: colorService.appBackgroundColor,
+        backgroundColor: context.color.background,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

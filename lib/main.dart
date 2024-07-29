@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:keyboard_warrior/service/color_service.dart';
+import 'package:keyboard_warrior/service/theme_service.dart';
 import 'package:keyboard_warrior/splash_view.dart';
-import 'package:keyboard_warrior/ui/mode/poem/poem_view.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(
     MultiProvider(
       providers: [
-        Provider(create: (_) => PoemView),
+        ChangeNotifierProvider(
+          create: (context) => ThemeService(),
+        ),
       ],
       child: const MyApp(),
     ),
@@ -20,12 +21,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ColorService colorService = ColorService();
     return MaterialApp(
+      theme:
+          context.watch<ThemeService>().appTheme.brightness == Brightness.light
+              ? ThemeData.light()
+              : ThemeData.dark(),
       title: 'Keyboard Warrior',
-      theme: ThemeData(
-        primaryColor: colorService.appBackgroundColor,
-      ),
       home: const SplashView(),
     );
   }
