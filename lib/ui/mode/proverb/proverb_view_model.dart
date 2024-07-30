@@ -2,18 +2,14 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:keyboard_warrior/data/model';
-import 'package:keyboard_warrior/ui/mode/base/base_view_model.dart';
+import 'package:keyboard_warrior/ui/base/base_view_model.dart';
 
 class ProverbViewModel extends BaseViewModel {
-  Future<List<Proverb>> loadPoem(String lang) async {
+  Future<List<Proverb>> loadPoem(bool isKor) async {
     String filePath;
-    if (lang == 'kor') {
-      filePath = 'assets/json/kor/kor_proverb.json';
-    } else if (lang == 'eng') {
-      filePath = 'assets/json/eng/eng_proverb.json';
-    } else {
-      throw Exception('error');
-    }
+    isKor
+        ? filePath = 'assets/json/kor/kor_proverb.json'
+        : filePath = 'assets/json/eng/eng_proverb.json';
 
     final String response = await rootBundle.loadString(filePath);
 

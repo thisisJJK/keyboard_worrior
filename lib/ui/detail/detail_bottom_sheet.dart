@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:keyboard_warrior/service/theme_service.dart';
-import 'package:keyboard_warrior/widget/bottom_sheet_btn.dart';
+import 'package:keyboard_warrior/widget/bottom_sheet_start_btn.dart';
 
 class DetailBottomSheet extends StatelessWidget {
   const DetailBottomSheet({
@@ -49,20 +49,30 @@ class DetailBottomSheet extends StatelessWidget {
               padding: const EdgeInsets.all(24),
               width: size.width * 0.95,
               height: size.height * 0.35,
-              child: Text(
-                content,
-                style: TextStyle(
-                  fontSize: 18,
-                  color: context.color.text,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: content
+                      .split('\n')
+                      .map(
+                        (line) => Text(
+                          line,
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: context.color.text,
+                          ),
+                        ),
+                      )
+                      .toList(),
                 ),
               ),
             ),
             const SizedBox(
               height: 8,
             ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: BottomSheetBtn(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: BottomSheetStartBtn(title: title, content: content),
             ),
           ],
         ),

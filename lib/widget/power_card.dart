@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:keyboard_warrior/service/lang_service.dart';
 import 'package:keyboard_warrior/service/theme_service.dart';
+import 'package:provider/provider.dart';
 
 class PowerCard extends StatelessWidget {
   const PowerCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    LangService langService = context.watch<LangService>();
     final Size mySize = MediaQuery.of(context).size;
     return SizedBox(
       height: mySize.height * 0.18,
@@ -17,7 +20,7 @@ class PowerCard extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                '총 전투력',
+                langService.isKor ? '총 전투력' : 'Total Power',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 24,

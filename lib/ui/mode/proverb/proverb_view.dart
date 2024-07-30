@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:keyboard_warrior/data/model';
+import 'package:keyboard_warrior/service/lang_service.dart';
 import 'package:keyboard_warrior/service/theme_service.dart';
 import 'package:keyboard_warrior/ui/detail/detail_bottom_sheet.dart';
-import 'package:keyboard_warrior/ui/mode/base/base_view.dart';
+import 'package:keyboard_warrior/ui/base/base_view.dart';
 import 'package:keyboard_warrior/ui/mode/proverb/proverb_view_model.dart';
 import 'package:keyboard_warrior/ui/mode_select/mode_selected_view.dart';
+import 'package:provider/provider.dart';
 
 class ProverbView extends StatefulWidget {
   const ProverbView({super.key});
@@ -18,12 +20,13 @@ class _ProverbViewState extends State<ProverbView> {
 
   @override
   Widget build(BuildContext context) {
+    LangService langService = context.watch<LangService>();
     return BaseView(
-      name: Mode.proverb.name,
+      name: langService.isKor ? Mode.korProverb.name : Mode.engProverb.name,
       viewModel: proverbViewModel,
       builder: (context, viewModel) {
         return FutureBuilder<List<Proverb>>(
-          future: viewModel.loadPoem('kor'),
+          future: viewModel.loadPoem(langService.isKor),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(

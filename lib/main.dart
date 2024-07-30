@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:keyboard_warrior/service/lang_service.dart';
 import 'package:keyboard_warrior/service/theme_service.dart';
 import 'package:keyboard_warrior/splash_view.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +9,10 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => ThemeService(),
+          create: (context) => ThemeService(isLightTheme: true),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => LangService(isKor: true),
         ),
       ],
       child: const MyApp(),

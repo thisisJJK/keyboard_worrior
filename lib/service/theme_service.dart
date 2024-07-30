@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:keyboard_warrior/service/theme/dark_theme.dart';
 import 'package:keyboard_warrior/service/theme/foundation/app_theme.dart';
 import 'package:keyboard_warrior/service/theme/light_theme.dart';
+import 'package:keyboard_warrior/ui/base/base_view_model.dart';
 import 'package:provider/provider.dart';
 
-class ThemeService with ChangeNotifier {
+class ThemeService extends BaseViewModel {
+  @override
+  bool isLightTheme;
   ThemeService({
+    required this.isLightTheme,
     AppTheme? appTheme,
   }) : appTheme = appTheme ?? LightTheme();
 
@@ -14,10 +18,10 @@ class ThemeService with ChangeNotifier {
   void toggleTheme() {
     if (appTheme.brightness == Brightness.light) {
       appTheme = DarkTheme();
-      print('dark');
+      isLightTheme = false;
     } else {
       appTheme = LightTheme();
-      print('light');
+      isLightTheme = true;
     }
     notifyListeners();
   }

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:keyboard_warrior/service/color_service.dart';
+import 'package:keyboard_warrior/service/lang_service.dart';
 import 'package:keyboard_warrior/service/theme_service.dart';
+import 'package:provider/provider.dart';
 
 class CustomManagementBtn extends StatelessWidget {
   const CustomManagementBtn({super.key});
 
   @override
   Widget build(BuildContext context) {
+    LangService langService = context.watch<LangService>();
     final size = MediaQuery.of(context).size;
     return GestureDetector(
         onTap: () {
@@ -23,7 +26,7 @@ class CustomManagementBtn extends StatelessWidget {
                 children: [
                   const Icon(Icons.add),
                   Text(
-                    '추가/편집',
+                    langService.isKor ? '추가/편집' : 'Add & Edit',
                     style: TextStyle(
                       color: context.color.text,
                       fontWeight: FontWeight.bold,

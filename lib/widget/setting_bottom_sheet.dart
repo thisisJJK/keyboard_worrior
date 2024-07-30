@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:keyboard_warrior/service/lang_service.dart';
 import 'package:keyboard_warrior/service/theme_service.dart';
 import 'package:keyboard_warrior/widget/setting_tile.dart';
 import 'package:provider/provider.dart';
@@ -8,9 +9,9 @@ class SettingBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeService themeService = ThemeService();
-    final bool isLightTheme =
-        themeService.appTheme.brightness == Brightness.light;
+    ThemeService themeService = context.watch<ThemeService>();
+    LangService langService = context.watch<LangService>();
+
     return Container(
       padding: const EdgeInsets.only(
         top: 32,
@@ -27,16 +28,24 @@ class SettingBottomSheet extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SettingTile(
-              icon: isLightTheme ? Icons.light_mode : Icons.dark_mode,
+              icon: themeService.isLightTheme
+                  ? Icons.light_mode
+                  : Icons.dark_mode,
               onPressed: context.read<ThemeService>().toggleTheme,
-              title: '모드',
-              subTitle: isLightTheme ? '라이트' : '다크',
+              title: langService.isKor ? '테마' : 'Theme',
+              subTitle: langService.isKor
+                  ? themeService.isLightTheme
+                      ? '라이트'
+                      : '다크'
+                  : themeService.isLightTheme
+                      ? 'Light'
+                      : 'Dark',
             ),
             SettingTile(
               icon: Icons.language,
-              onPressed: () {},
-              title: '언어',
-              subTitle: '한국어',
+              onPressed: context.read<LangService>().toggleLang,
+              title: langService.isKor ? '언어' : 'Language',
+              subTitle: langService.isKor ? '한국어' : 'English',
             ),
           ],
         ),

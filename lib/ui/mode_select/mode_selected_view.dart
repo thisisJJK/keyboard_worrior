@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:keyboard_warrior/service/lang_service.dart';
 import 'package:keyboard_warrior/service/theme_service.dart';
 import 'package:keyboard_warrior/ui/mode/custom/custom_view.dart';
 import 'package:keyboard_warrior/ui/mode/poem/poem_view.dart';
@@ -7,13 +8,19 @@ import 'package:keyboard_warrior/ui/mode/word/word_view.dart';
 import 'package:keyboard_warrior/widget/mode_card.dart';
 import 'package:keyboard_warrior/widget/power_card.dart';
 import 'package:keyboard_warrior/widget/setting_bottom_sheet.dart';
+import 'package:provider/provider.dart';
 
 enum Mode {
-  battle(name: '배틀하기'),
-  poem(name: '시'),
-  word(name: '단어'),
-  proverb(name: '속담'),
-  custom(name: '나만의글');
+  korBattle(name: '배틀하기'),
+  korPoem(name: '시'),
+  korWord(name: '단어'),
+  korProverb(name: '속담'),
+  korCustom(name: '나만의글'),
+  engBattle(name: 'Battle'),
+  engPoem(name: 'Poem'),
+  engWord(name: 'Word'),
+  engProverb(name: 'Proverb'),
+  engCustom(name: 'Custom');
 
   final String name;
   const Mode({required this.name});
@@ -28,6 +35,7 @@ class ModeSelectedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LangService langService = context.watch<LangService>();
     return Scaffold(
       backgroundColor: context.color.background,
       appBar: AppBar(
@@ -48,7 +56,7 @@ class ModeSelectedView extends StatelessWidget {
               )),
         ],
         title: Text(
-          '키보드워리어',
+          langService.isKor ? '키보드워리어' : 'Keyboard Warrior',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 32,
@@ -66,7 +74,8 @@ class ModeSelectedView extends StatelessWidget {
               height: 8,
             ),
             ModeCard(
-              name: Mode.battle.name,
+              name:
+                  langService.isKor ? Mode.korBattle.name : Mode.engBattle.name,
               onPressed: () {},
               isWide: true,
             ),
@@ -77,7 +86,8 @@ class ModeSelectedView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ModeCard(
-                  name: Mode.poem.name,
+                  name:
+                      langService.isKor ? Mode.korPoem.name : Mode.engPoem.name,
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
@@ -88,7 +98,9 @@ class ModeSelectedView extends StatelessWidget {
                   isWide: false,
                 ),
                 ModeCard(
-                  name: Mode.proverb.name,
+                  name: langService.isKor
+                      ? Mode.korProverb.name
+                      : Mode.engProverb.name,
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
@@ -104,7 +116,8 @@ class ModeSelectedView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ModeCard(
-                  name: Mode.word.name,
+                  name:
+                      langService.isKor ? Mode.korWord.name : Mode.engWord.name,
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
@@ -115,7 +128,9 @@ class ModeSelectedView extends StatelessWidget {
                   isWide: false,
                 ),
                 ModeCard(
-                  name: Mode.custom.name,
+                  name: langService.isKor
+                      ? Mode.korCustom.name
+                      : Mode.engCustom.name,
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(

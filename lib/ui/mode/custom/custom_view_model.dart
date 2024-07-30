@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:keyboard_warrior/data/model';
-import 'package:keyboard_warrior/ui/mode/base/base_view_model.dart';
+import 'package:keyboard_warrior/ui/base/base_view_model.dart';
 
 class CustomViewModel extends BaseViewModel {
   Future<List<Custom>> loadPoem() async {

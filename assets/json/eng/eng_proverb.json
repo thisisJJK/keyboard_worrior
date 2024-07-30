@@ -1,11 +1,14 @@
 [
     {
+        "title": "proverb 1",
         "content": "proverb1"
     },
     {
+        "title": "proverb 2",
         "content": "proverb2"
     },
     {
+        "title": "proverb 3",
         "content": "proverb3"
     }
 ]
