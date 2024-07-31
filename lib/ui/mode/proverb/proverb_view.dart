@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:keyboard_warrior/data/model';
 import 'package:keyboard_warrior/service/lang_service.dart';
 import 'package:keyboard_warrior/service/theme_service.dart';
-import 'package:keyboard_warrior/ui/detail/detail_bottom_sheet.dart';
 import 'package:keyboard_warrior/ui/base/base_view.dart';
+import 'package:keyboard_warrior/ui/detail/detail_bottom_sheet.dart';
 import 'package:keyboard_warrior/ui/mode/proverb/proverb_view_model.dart';
 import 'package:keyboard_warrior/ui/mode_select/mode_selected_view.dart';
 import 'package:provider/provider.dart';
@@ -59,7 +59,12 @@ class _ProverbViewState extends State<ProverbView> {
                       child: Card(
                         color: context.color.modeCardColor,
                         child: ListTile(
-                          title: Text(proverb.content),
+                          title: Text(proverb.title),
+                          titleTextStyle: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            color: context.appTheme.color.text,
+                          ),
                         ),
                       ),
                     ),

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:keyboard_warrior/data/model';
 import 'package:keyboard_warrior/service/lang_service.dart';
 import 'package:keyboard_warrior/service/theme_service.dart';
-import 'package:keyboard_warrior/ui/detail/detail_bottom_sheet.dart';
 import 'package:keyboard_warrior/ui/base/base_view.dart';
+import 'package:keyboard_warrior/ui/detail/detail_bottom_sheet.dart';
 import 'package:keyboard_warrior/ui/mode/poem/poem_view_model.dart';
 import 'package:keyboard_warrior/ui/mode_select/mode_selected_view.dart';
 import 'package:provider/provider.dart';
@@ -43,7 +43,7 @@ class _PoemViewState extends State<PoemView> {
                 itemBuilder: (context, index) {
                   final poem = poemItems[index];
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: GestureDetector(
                       onTap: () {
                         showModalBottomSheet(
@@ -58,8 +58,19 @@ class _PoemViewState extends State<PoemView> {
                       child: Card(
                         color: context.color.modeCardColor,
                         child: ListTile(
-                          title: Text(poem.title),
-                          subtitle: Text(poem.writer),
+                          title: Text(
+                            poem.title,
+                          ),
+                          titleTextStyle: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              color: context.appTheme.color.text),
+                          subtitle: Text(
+                            poem.writer,
+                          ),
+                          subtitleTextStyle: TextStyle(
+                            color: context.appTheme.color.subtext,
+                          ),
                         ),
                       ),
                     ),

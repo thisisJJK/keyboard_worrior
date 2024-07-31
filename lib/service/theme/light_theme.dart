@@ -8,10 +8,12 @@ class LightTheme implements AppTheme {
 
   @override
   AppColor color = AppColor(
-    modeCardColor: ColorService.sage,
-    background: ColorService.timberwolf,
-    text: ColorService.black,
-    subtext: ColorService.cardTextColor,
-    powerCardColor: ColorService.orange,
-  );
+      modeCardColor: ColorService.sage,
+      background: ColorService.timberwolf,
+      text: ColorService.hookergreen,
+      subtext: ColorService.hookergreen,
+      powerCardColor: ColorService.violet,
+      powerTextColor: ColorService.black,
+      nexttext: ColorService.grey700,
+      hinttext: ColorService.grey400);
 }

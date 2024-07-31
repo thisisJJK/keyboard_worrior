@@ -66,8 +66,10 @@ class ModeSelectedView extends StatelessWidget {
         centerTitle: false,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 32),
+        padding: const EdgeInsets.all(8),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+
           children: [
             const PowerCard(),
             const SizedBox(

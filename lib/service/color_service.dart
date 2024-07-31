@@ -4,9 +4,14 @@ class ColorService {
   static Color timberwolf = const Color(0xFFDDDCD6);
   static Color sage = const Color(0xFfc4c1a8);
   static Color cardTextColor = const Color(0xFF241623);
-  static Color orange = const Color(0xFFd56f3e);
+  static Color flame = const Color(0xFFd56f3e);
   static Color viridian = const Color(0xFF00917a);
-  static Color darkpurple = const Color(0xff241623);
+  static Color prussianblue = const Color(0xff003459);
+  static Color hookergreen = const Color(0xff517664);
+  static Color federalblue = const Color(0xff1b065e);
+  static Color indigodye = const Color(0xff084b83);
+  static Color violet = const Color(0xff9c89b8);
+  static Color onyx = const Color(0xff2e3532);
 
   static Color white = const Color(0xFFFFFFFF);
   static Color grey100 = const Color(0xFFFAFAFA);

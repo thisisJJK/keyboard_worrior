@@ -1,12 +1,42 @@
 [
     {
-        "title": "poem title 1",
-        "writer": "poem writer 1",
-        "content": "poem content 1"
+        "title": "The Road Not Taken",
+        "writer": "Robert Frost",
+        "content": "Two roads diverged in a yellow wood\nAnd sorry I could not travel both\nAnd be one traveler, long I stood\nAnd looked down one as far as I could\nTo where it bent in the undergrowth\nThen took the other, as just as fair\nAnd having perhaps the better claim\nBecause it was grassy and wanted wear\nThough as for that the passing there\nHad worn them really about the same\nAnd both that morning equally lay\nIn leaves no step had trodden black\nOh, I kept the first for another day\nYet knowing how way leads on to way\nI doubted if I should ever come back\nI shall be telling this with a sigh\nSomewhere ages and ages hence\nTwo roads diverged in a wood, and I\nI took the one less traveled by\nAnd that has made all the difference"
     },
     {
-        "title": "poem title 2",
-        "writer": "poem writer 2",
-        "content": "poem content 2"
+        "title": "If",
+        "writer": "Rudyard Kipling",
+        "content": "If you can keep your head when all about you\nAre losing theirs and blaming it on you\nIf you can trust yourself when all men doubt you\nBut make allowance for their doubting too\nIf you can wait and not be tired by waiting\nOr being lied about, dont deal in lies\nOr being hated dont give way to hating\nAnd yet dont look too good, nor talk too wise\nIf you can dream—and not make dreams your master\nIf you can think—and not make thoughts your aim\nIf you can meet with Triumph and Disaster\nAnd treat those two impostors just the same\nIf you can bear to hear the truth you’ve spoken\nTwisted by knaves to make a trap for fools\nOr watch the things you gave your life to, broken\nAnd stoop and build em up with worn-out tools\nIf you can make one heap of all your winnings\nAnd risk it on one turn of pitch-and-toss\nAnd lose, and start again at your beginnings\nAnd never breathe a word about your loss\nIf you can force your heart and nerve and sinew\nTo serve your turn long after they are gone\nAnd so hold on when there is nothing in you\nExcept the Will which says to them Hold on\nIf you can talk with crowds and keep your virtue\nOr walk with Kings—nor lose the common touch\nIf neither foes nor loving friends can hurt you\nIf all men count with you, but none too much\nIf you can fill the unforgiving minute\nWith sixty seconds worth of distance run\nYours is the Earth and everything thats in it\nAnd—which is more—you’ll be a Man, my son"
+    },
+    {
+        "title": "Ozymandias",
+        "writer": "Percy Bysshe Shelley",
+        "content": "I met a traveler from an antique land\nWho said: Two vast and trunkless legs of stone\nStand in the desert. Near them, on the sand\nHalf sunk, a shattered visage lies, whose frown\nAnd wrinkled lip, and sneer of cold command\nTell that its sculptor well those passions read\nWhich yet survive, stamped on these lifeless things\nThe hand that mocked them, and the heart that fed\nAnd on the pedestal, these words appear\nMy name is Ozymandias, king of kings\nLook on my works, ye mighty, and despair\nNothing beside remains. Round the decay\nOf that colossal wreck, boundless and bare\nThe lone and level sands stretch far away"
+    },
+    {
+        "title": "Sonnet 18",
+        "writer": "William Shakespeare",
+        "content": "Shall I compare thee to a summers day\nThou art more lovely and more temperate\nRough winds do shake the darling buds of May\nAnd summers lease hath all too short a date\nSometime too hot the eye of heaven shines\nAnd often is his gold complexion dimmed\nAnd every fair from fair sometime declines\nBy chance or natures changing course untrimmed\nBut thy eternal summer shall not fade\nNor lose possession of that fair thou owest\nNor shall Death brag thou wanderest in his shade\nWhen in eternal lines to time thou growest\nSo long as men can breathe or eyes can see\nSo long lives this, and this gives life to thee"
+    },
+    {
+        "title": "The Tyger",
+        "writer": "William Blake",
+        "content": "Tyger Tyger, burning bright\nIn the forests of the night\nWhat immortal hand or eye\nCould frame thy fearful symmetry\nIn what distant deeps or skies\nBurnt the fire of thine eyes\nOn what wings dare he aspire\nWhat the hand, dare seize the fire\nAnd what shoulder, & what art\nCould twist the sinews of thy heart\nAnd when thy heart began to beat\nWhat dread hand What dread feet\nWhat the hammer What the chain\nIn what furnace was thy brain\nWhat the anvil What dread grasp\nDare its deadly terrors clasp\nWhen the stars threw down their spears\nAnd watered heaven with their tears\nDid he smile his work to see\nDid he who made the Lamb make thee\nTyger Tyger burning bright\nIn the forests of the night\nWhat immortal hand or eye\nDare frame thy fearful symmetry"
+    },
+    {
+        "title": "The Raven",
+        "writer": "Edgar Allan Poe",
+        "content": "Once upon a midnight dreary, while I pondered, weak and weary\nOver many a quaint and curious volume of forgotten lore\nWhile I nodded, nearly napping, suddenly there came a tapping\nAs of someone gently rapping, rapping at my chamber door\nTis some visitor, I muttered, tapping at my chamber door\nOnly this and nothing more\nAh, distinctly I remember it was in the bleak December\nAnd each separate dying ember wrought its ghost upon the floor\nEagerly I wished the morrow—vainly I had sought to borrow\nFrom my books surcease of sorrow—sorrow for the lost Lenore\nFor the rare and radiant maiden whom the angels name Lenore\nNameless here for evermore\nAnd the silken, sad, uncertain rustling of each purple curtain\nThrilled me—filled me with fantastic terrors never felt before\nSo that now, to still the beating of my heart, I stood repeating\nTis some visitor entreating entrance at my chamber door\nSome late visitor entreating entrance at my chamber door\nThis it is and nothing more\nPresently my soul grew stronger; hesitating then no longer\nSir, said I, or Madam, truly your forgiveness I implore\nBut the fact is I was napping, and so gently you came rapping\nAnd so faintly you came tapping, tapping at my chamber door\nThat I scarce was sure I heard you—here I opened wide the door\nDarkness there and nothing more"
+    },
+    {
+        "title": "To the Virgins, to Make Much of Time",
+        "writer": "Robert Herrick",
+        "content": "Gather ye rosebuds while ye may\nOld Time is still a-flying\nAnd this same flower that smiles today\nTomorrow will be dying\nThe glorious lamp of heaven, the sun\nThe higher hes a-getting\nThe sooner will his race be run\nAnd nearer hes to setting\nThat age is best which is the first\nWhen youth and blood are warmer\nBut being spent, the worse, and worst\nTimes still succeed the former\nThen be not coy, but use your time\nAnd while ye may, go marry\nFor having lost but once your prime\nYou may forever tarry"
+    },
+    {
+        "title": "I Wandered Lonely as a Cloud",
+        "writer": "William Wordsworth",
+        "content": "I wandered lonely as a cloud\nThat floats on high oer vales and hills\nWhen all at once I saw a crowd\nA host, of golden daffodils\nBeside the lake, beneath the trees\nFluttering and dancing in the breeze\nContinuous as the stars that shine\nAnd twinkle on the milky way\nThey stretched in never-ending line\nAlong the margin of a bay\nTen thousand saw I at a glance\nTossing their heads in sprightly dance\nThe waves beside them danced; but they\nOut-did the sparkling waves in glee\nA poet could not but be gay\nIn such a jocund company\nI gazed—and gazed—but little thought\nWhat wealth the show to me had brought\nFor oft, when on my couch I lie\nIn vacant or in pensive mood\nThey flash upon that inward eye\nWhich is the bliss of solitude\nAnd then my heart with pleasure fills\nAnd dances with the daffodils"
     }
 ]

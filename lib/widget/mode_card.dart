@@ -18,7 +18,7 @@ class ModeCard extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: SizedBox(
-        width: isWide ? mySize.width * 0.9 : mySize.width * 0.45,
+        width: isWide ? mySize.width : mySize.width * 0.48,
         height: mySize.height * 0.15,
         child: Card(
           color: context.color.modeCardColor,

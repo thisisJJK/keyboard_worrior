@@ -1,14 +1,22 @@
 [
     {
-        "title": "proverb 1",
-        "content": "proverb1"
+        "title": "Proverb 1",
+        "content": "A stith in time saves nine.\nActions speak louder than words.\nThe early bird catches the worm.\nBetter late than never.\nEvery cloud has a silver lining.\nA picture is worth a thousand words.\nWhen in Rome, do as the Romans do.\nDon't count your chickens before they hatch.\nHonesty is the best policy.\nTwo heads are better than one."
     },
     {
-        "title": "proverb 2",
-        "content": "proverb2"
+        "title": "Proverb 2",
+        "content": "The grass is always greener on the other side.\nYou can't judge a book by its cover.\nBirds of a feather flock together.\nA penny saved is a penny earned.\nThe pen is mightier than the sword.\nTime is money.\nNecessity is the mother of invention.\nThe squeaky wheel gets the grease.\nBeggars can't be choosers.\nFortune favors the bold."
     },
     {
-        "title": "proverb 3",
-        "content": "proverb3"
+        "title": "Proverb 3",
+        "content": "Don't put all your eggs in one basket.\nStrike while the iron is hot.\nToo many cooks spoil the broth.\nThe apple doesn't fall far from the tree.\nAn apple a day keeps the doctor away.\nRome wasn't built in a day.\nThe best things in life are free.\nYou can't have your cake and eat it too.\nLet sleeping dogs lie.\nA bird in the hand is worth two in the bush."
+    },
+    {
+        "title": "Proverb 4",
+        "content": "Practice makes perfect.\nDon't bite off more than you can chew.\nA friend in need is a friend indeed.\nBlood is thicker than water.\nBeauty is in the eye of the beholder.\nActions speak louder than words.\nAbsence makes the heart grow fonder.\nThe cat is out of the bag.\nCuriosity killed the cat.\nDon't cry over spilled milk."
+    },
+    {
+        "title": "Proverb 5",
+        "content": "All that glitters is not gold.\nThe early bird catches the worm.\nHaste makes waste.\nIt's no use crying over spilled milk.\nMoney doesn't grow on trees.\nNecessity is the mother of invention.\nNo pain, no gain.\nOnce bitten, twice shy.\nOut of sight, out of mind.\nThe grass is always greener on the other side."
     }
 ]

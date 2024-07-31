@@ -10,8 +10,11 @@ class DarkTheme implements AppTheme {
   AppColor color = AppColor(
     modeCardColor: ColorService.grey800,
     background: ColorService.black.withOpacity(0.55),
-    text: ColorService.grey100,
-    subtext: ColorService.cardTextColor,
-    powerCardColor: ColorService.orange,
+    text: ColorService.sage,
+    subtext: ColorService.sage,
+    powerCardColor: ColorService.grey800,
+    powerTextColor: ColorService.violet,
+    nexttext: ColorService.grey300,
+    hinttext: ColorService.grey500,
   );
 }

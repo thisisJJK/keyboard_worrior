@@ -17,7 +17,7 @@ class CustomManagementBtn extends StatelessWidget {
         },
         child: SizedBox(
           height: size.height * 0.09,
-          width: size.width * 0.8,
+          width: size.width * 0.85,
           child: Card(
             color: ColorService.viridian,
             child: Center(
@@ -28,7 +28,7 @@ class CustomManagementBtn extends StatelessWidget {
                   Text(
                     langService.isKor ? '추가/편집' : 'Add & Edit',
                     style: TextStyle(
-                      color: context.color.text,
+                      color: context.appTheme.color.powerTextColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                     ),

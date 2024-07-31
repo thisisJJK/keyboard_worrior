@@ -7,7 +7,9 @@ class AppColor {
     required this.text,
     required this.subtext,
     required this.powerCardColor,
-    
+    required this.nexttext,
+    required this.hinttext,
+    required this.powerTextColor,
   });
 
   final Color modeCardColor;
@@ -15,7 +17,9 @@ class AppColor {
 
   final Color text;
   final Color subtext;
+  final Color nexttext;
+  final Color hinttext;
 
   final Color powerCardColor;
-  
+  final Color powerTextColor;
 }
