@@ -8,6 +8,8 @@ import 'package:keyboard_warrior/ui/base/base_view_model.dart';
 class TypingViewModel extends BaseViewModel {
   List<String> totalSentences = [];
   List<String> jasoList = [];
+  List<String> typedJasoList = [];
+  List<String> completeJasoList = [];
 
   String completedSentences = '';
   bool isStarted = false;
@@ -76,15 +78,11 @@ class TypingViewModel extends BaseViewModel {
     countTypedJaso = typedJasoList.length;
 
     completedSentences = totalSentences.join('');
-    List<String> completeJasoList = splitHangulIntoJaso(completedSentences);
+    completeJasoList = splitHangulIntoJaso(completedSentences);
     jasoList = [];
     countCompleteJaso = completeJasoList.length;
 
     countTotal = countTypedJaso + countCompleteJaso;
-
-    print(completedSentences);
-    print(completeJasoList);
-    print(totalSentences);
 
     _updateSpeed();
     notifyListeners();
@@ -141,12 +139,35 @@ class TypingViewModel extends BaseViewModel {
   void timerDispose() {
     _timer?.cancel();
     isStarted = false;
+    _elapsedTime = Duration.zero;
+    currentLineIndex = 0;
+    nextLineIndex = 0;
+    completedSentences = '';
+    typedJasoList = [];
+    completeJasoList = [];
+    jasoList = [];
+    totalSentences = [];
+    countCompleteJaso = 0;
+    countTotal = 0;
+    countTypedJaso = 0;
+    previousSentence4 = '';
+    previousSentence3 = '';
+    previousSentence2 = '';
+    previousSentence1 = '';
+    currentSentence = '';
+    nextSentence = '';
   }
 
   void loadSentence(BuildContext context, speed) {
     bool isNext = content.split('\n').length > nextLineIndex;
     bool isLast = content.split('\n').length == nextLineIndex;
     bool isEnd = content.split('\n').length < nextLineIndex;
+
+    previousLinsIndex4 = currentLineIndex - 4;
+    previousLinsIndex3 = currentLineIndex - 3;
+    previousLinsIndex2 = currentLineIndex - 2;
+    previousLinsIndex1 = currentLineIndex - 1;
+    nextLineIndex = currentLineIndex + 1;
 
     if (isNext) {
       if (previousLinsIndex4 > -1) {

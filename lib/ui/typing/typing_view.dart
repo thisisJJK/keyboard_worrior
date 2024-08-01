@@ -49,6 +49,14 @@ class _TypingViewState extends State<TypingView> {
   @override
   Widget build(BuildContext context) {
     return BaseView(
+      onPressed: () {
+        textEditingController.clear();
+        _typingViewModel.timerDispose();
+        _speed = 0.0;
+        _timer = Duration.zero;
+        _typingViewModel.loadSentence(context, _speed);
+      },
+      icon: Icons.refresh_rounded,
       name: widget.title,
       viewModel: _typingViewModel,
       builder: (context, viewModel) => Column(

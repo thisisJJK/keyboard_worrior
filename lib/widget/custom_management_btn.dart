@@ -26,7 +26,7 @@ class CustomManagementBtn extends StatelessWidget {
                 children: [
                   const Icon(Icons.add),
                   Text(
-                    langService.isKor ? '추가/편집' : 'Add & Edit',
+                    langService.isKor ? '추가 & 편집' : 'Add & Edit',
                     style: TextStyle(
                       color: context.appTheme.color.powerTextColor,
                       fontWeight: FontWeight.bold,

@@ -17,12 +17,14 @@ class CustomView extends StatefulWidget {
 }
 
 class _ProverbViewState extends State<CustomView> {
-  CustomViewModel customViewModel = CustomViewModel();
+  CustomViewModel customViewModel = CustomViewModel('custom.json');
 
   @override
   Widget build(BuildContext context) {
     LangService langService = context.watch<LangService>();
     return BaseView(
+      onPressed: () {},
+      icon: Icons.delete_rounded,
       name: langService.isKor ? Mode.korCustom.name : Mode.engCustom.name,
       viewModel: customViewModel,
       builder: (context, viewModel) {
@@ -31,7 +33,7 @@ class _ProverbViewState extends State<CustomView> {
           child: Column(
             children: [
               FutureBuilder<List<Custom>>(
-                future: viewModel.loadPoem(),
+                future: viewModel.loadCustom(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(

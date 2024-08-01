@@ -8,6 +8,7 @@ class BaseViewModel with ChangeNotifier {
 
   set isLightTheme(bool value) {
     _isLightTheme = value;
+    notifyListeners();
   }
 
   bool _isKor = true;

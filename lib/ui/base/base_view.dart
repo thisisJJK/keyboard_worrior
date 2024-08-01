@@ -9,7 +9,11 @@ class BaseView<T extends BaseViewModel> extends StatelessWidget {
     required this.name,
     required this.viewModel,
     required this.builder,
+    required this.icon,
+    required this.onPressed,
   });
+  final IconData icon;
+  final Function() onPressed;
   final String name;
   final T viewModel;
   final Widget Function(
@@ -24,6 +28,15 @@ class BaseView<T extends BaseViewModel> extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: context.color.background,
         title: Text(name),
+        actions: [
+          IconButton(
+            onPressed: onPressed,
+            icon: Icon(
+              icon,
+              size: 30,
+            ),
+          )
+        ],
       ),
       body: ChangeNotifierProvider(
         create: (context) => viewModel,

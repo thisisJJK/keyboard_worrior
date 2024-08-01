@@ -6,6 +6,7 @@ import 'package:keyboard_warrior/ui/base/base_view.dart';
 import 'package:keyboard_warrior/ui/detail/detail_bottom_sheet.dart';
 import 'package:keyboard_warrior/ui/mode/poem/poem_view_model.dart';
 import 'package:keyboard_warrior/ui/mode_select/mode_selected_view.dart';
+import 'package:keyboard_warrior/widget/setting_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 
 class PoemView extends StatefulWidget {
@@ -22,6 +23,11 @@ class _PoemViewState extends State<PoemView> {
   Widget build(BuildContext context) {
     LangService langService = context.watch<LangService>();
     return BaseView(
+      onPressed: () {
+        showModalBottomSheet(
+            context: context, builder: (context) => const SettingBottomSheet());
+      },
+      icon: Icons.settings_rounded,
       name: langService.isKor ? Mode.korPoem.name : Mode.engPoem.name,
       viewModel: poemViewModel,
       builder: (context, viewModel) {

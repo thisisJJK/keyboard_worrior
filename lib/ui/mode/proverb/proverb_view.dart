@@ -6,6 +6,7 @@ import 'package:keyboard_warrior/ui/base/base_view.dart';
 import 'package:keyboard_warrior/ui/detail/detail_bottom_sheet.dart';
 import 'package:keyboard_warrior/ui/mode/proverb/proverb_view_model.dart';
 import 'package:keyboard_warrior/ui/mode_select/mode_selected_view.dart';
+import 'package:keyboard_warrior/widget/setting_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 
 class ProverbView extends StatefulWidget {
@@ -22,11 +23,16 @@ class _ProverbViewState extends State<ProverbView> {
   Widget build(BuildContext context) {
     LangService langService = context.watch<LangService>();
     return BaseView(
+      onPressed: () {
+        showModalBottomSheet(
+            context: context, builder: (context) => const SettingBottomSheet());
+      },
+      icon: Icons.settings_rounded,
       name: langService.isKor ? Mode.korProverb.name : Mode.engProverb.name,
       viewModel: proverbViewModel,
       builder: (context, viewModel) {
         return FutureBuilder<List<Proverb>>(
-          future: viewModel.loadPoem(langService.isKor),
+          future: viewModel.loadProverb(langService.isKor),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
@@ -61,7 +67,7 @@ class _ProverbViewState extends State<ProverbView> {
                         child: ListTile(
                           title: Text(proverb.title),
                           titleTextStyle: TextStyle(
-                            fontSize: 18,
+                            fontSize: 20,
                             fontWeight: FontWeight.w600,
                             color: context.appTheme.color.text,
                           ),

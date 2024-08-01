@@ -5,7 +5,7 @@ import 'package:keyboard_warrior/data/model';
 import 'package:keyboard_warrior/ui/base/base_view_model.dart';
 
 class ProverbViewModel extends BaseViewModel {
-  Future<List<Proverb>> loadPoem(bool isKor) async {
+  Future<List<Proverb>> loadProverb(bool isKor) async {
     String filePath;
     isKor
         ? filePath = 'assets/json/kor/kor_proverb.json'
