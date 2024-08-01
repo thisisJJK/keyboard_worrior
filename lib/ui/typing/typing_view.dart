@@ -34,7 +34,7 @@ class _TypingViewState extends State<TypingView> {
         _timer = timer;
       });
     }, content: widget.content);
-    _typingViewModel.loadSentence(context,_speed);
+    _typingViewModel.loadSentence(context, _speed);
     super.initState();
   }
 
@@ -48,8 +48,6 @@ class _TypingViewState extends State<TypingView> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     return BaseView(
       name: widget.title,
       viewModel: _typingViewModel,
@@ -57,14 +55,14 @@ class _TypingViewState extends State<TypingView> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Flexible(
-            flex: 1,
+            flex: 4,
             child: SpeedCard(
               speed: _speed,
               timer: _timer,
             ),
           ),
           Flexible(
-            flex: 2,
+            flex: 7,
             child: Card(
               color: context.appTheme.color.modeCardColor,
               child: Container(
@@ -73,46 +71,10 @@ class _TypingViewState extends State<TypingView> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 11),
-                      child: Text(
-                        viewModel.previousSentence4,
-                        style: TextStyle(
-                            color: context.appTheme.color.nexttext,
-                            fontSize: 21,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 11),
-                      child: Text(
-                        viewModel.previousSentence3,
-                        style: TextStyle(
-                            color: context.appTheme.color.nexttext,
-                            fontSize: 21,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 11),
-                      child: Text(
-                        viewModel.previousSentence2,
-                        style: TextStyle(
-                            color: context.appTheme.color.nexttext,
-                            fontSize: 21,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 11),
-                      child: Text(
-                        viewModel.previousSentence1,
-                        style: TextStyle(
-                            color: context.appTheme.color.nexttext,
-                            fontSize: 21,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
+                    _previousSentence(viewModel.previousSentence4),
+                    _previousSentence(viewModel.previousSentence3),
+                    _previousSentence(viewModel.previousSentence2),
+                    _previousSentence(viewModel.previousSentence1),
                     const SizedBox(
                       height: 15,
                     ),
@@ -125,10 +87,10 @@ class _TypingViewState extends State<TypingView> {
                             textEditingController.text,
                           ),
                           style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            color: context.appTheme.color.text,
-                          ),
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: context.appTheme.color.text,
+                              overflow: TextOverflow.ellipsis),
                         ),
                       ),
                     ),
@@ -143,6 +105,7 @@ class _TypingViewState extends State<TypingView> {
                             color: context.appTheme.color.nexttext,
                             fontSize: 21,
                             fontWeight: FontWeight.w600),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     const SizedBox(
@@ -162,7 +125,10 @@ class _TypingViewState extends State<TypingView> {
                               viewModel.isStarted
                                   ? null
                                   : viewModel.startTyping();
-                              viewModel.countText(value);
+
+                              viewModel.isKor
+                                  ? viewModel.countJaso(value)
+                                  : viewModel.countAlphabet(value);
 
                               setState(
                                 () {
@@ -170,7 +136,7 @@ class _TypingViewState extends State<TypingView> {
                                     viewModel.checkInput(value);
                                     textEditingController.clear();
 
-                                    viewModel.loadSentence(context,_speed);
+                                    viewModel.loadSentence(context, _speed);
                                   }
                                 },
                               );
@@ -207,4 +173,15 @@ class _TypingViewState extends State<TypingView> {
       ),
     );
   }
+
+  Widget _previousSentence(String text) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 11),
+        child: Text(
+          text,
+          style: TextStyle(
+              color: context.appTheme.color.nexttext,
+              fontSize: 21,
+              fontWeight: FontWeight.w600),
+        ),
+      );
 }

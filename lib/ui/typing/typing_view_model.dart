@@ -6,13 +6,15 @@ import 'package:keyboard_warrior/service/theme_service.dart';
 import 'package:keyboard_warrior/ui/base/base_view_model.dart';
 
 class TypingViewModel extends BaseViewModel {
-  List<String> completedSentences = [];
   List<String> totalSentences = [];
+  List<String> jasoList = [];
+
+  String completedSentences = '';
   bool isStarted = false;
   DateTime? _startTime;
-  int countTypedText = 0;
-  int countCompleteText = 0;
-  int countTotalText = 0;
+  int countTypedJaso = 0;
+  int countCompleteJaso = 0;
+  int countTotal = 0;
   Duration _elapsedTime = Duration.zero;
   Timer? _timer;
   final Function(double) onSpeedUpdate;
@@ -41,19 +43,60 @@ class TypingViewModel extends BaseViewModel {
     required this.content,
   });
 
-  void countText(String text) {
-    countTypedText = text.replaceAll(RegExp(r'[,]'), '').length;
-    if (currentSentence == text) {
-      totalSentences.add(previousSentence1);
-    }
-    String completedSentences =
-        totalSentences.join('').replaceAll(RegExp(r'[,]'), '');
-    countCompleteText = completedSentences.length;
+  List<String> splitHangulIntoJaso(String input) {
+    for (int i = 0; i < input.length; i++) {
+      int codeUnit = input.codeUnitAt(i);
 
-    countTotalText = countTypedText + countCompleteText;
-    print(countCompleteText);
+      if (codeUnit >= 0xAC00 && codeUnit <= 0xD7A3) {
+        int baseCode = codeUnit - 0xAC00;
+
+        int cho = (baseCode / 588).floor();
+        int jung = ((baseCode % 588) / 28).floor();
+        int jong = baseCode % 28;
+
+        jasoList.add(String.fromCharCode(0x1100 + cho));
+        jasoList.add(String.fromCharCode(0x1161 + jung));
+        if (jong != 0) {
+          jasoList.add(String.fromCharCode(0x11A7 + jong));
+        }
+      } else {
+        jasoList.add(input[i]);
+      }
+    }
+    return jasoList;
+  }
+
+  void countJaso(String text) {
+    if (currentSentence == text) {
+      totalSentences.add(currentSentence);
+    }
+
+    List<String> typedJasoList = splitHangulIntoJaso(text);
+    jasoList = [];
+    countTypedJaso = typedJasoList.length;
+
+    completedSentences = totalSentences.join('');
+    List<String> completeJasoList = splitHangulIntoJaso(completedSentences);
+    jasoList = [];
+    countCompleteJaso = completeJasoList.length;
+
+    countTotal = countTypedJaso + countCompleteJaso;
+
     print(completedSentences);
-    print(countTypedText);
+    print(completeJasoList);
+    print(totalSentences);
+
+    _updateSpeed();
+    notifyListeners();
+  }
+
+  void countAlphabet(String text) {
+    if (currentSentence == text) {
+      totalSentences.add(currentSentence);
+    }
+    int countTypedText = text.length;
+    int countCompleteSentences = totalSentences.join('').length;
+    countTotal = countCompleteSentences + countTypedText;
 
     _updateSpeed();
     notifyListeners();
@@ -63,7 +106,7 @@ class TypingViewModel extends BaseViewModel {
     isStarted = true;
 
     _startTime = DateTime.now();
-    print(_startTime);
+
     _elapsedTime = Duration.zero;
     _startTimer();
     notifyListeners();
@@ -83,32 +126,19 @@ class TypingViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  // void onTextChanged(String text) {
-  //   if (_startTime == null) {
-  //     startTyping();
-  //   }
-
-  //   print(countTotalText);
-  //   print(completedSentences);
-
-  //   _updateSpeed();
-  //   notifyListeners();
-  // }
-
   void _updateSpeed() {
     if (_startTime == null) {
       return;
     }
 
     final min = _elapsedTime.inSeconds / 60;
-    final speed = (min > 0) ? (countTotalText / min) : 0.0;
+    final speed = (min > 0) ? (countTotal / (min)) : 0.0;
 
     onSpeedUpdate(speed);
     notifyListeners();
   }
 
   void timerDispose() {
-    print('dispose');
     _timer?.cancel();
     isStarted = false;
   }
@@ -152,6 +182,7 @@ class TypingViewModel extends BaseViewModel {
 
   void showEndDialog(context, speed) {
     showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (context) {
           return Dialog(

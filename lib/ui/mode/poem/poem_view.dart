@@ -71,6 +71,7 @@ class _PoemViewState extends State<PoemView> {
                           subtitleTextStyle: TextStyle(
                             color: context.appTheme.color.subtext,
                           ),
+                          trailing: const Text('전투력'),
                         ),
                       ),
                     ),
